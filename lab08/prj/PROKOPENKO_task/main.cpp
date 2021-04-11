@@ -26,7 +26,6 @@ double validator(wstring number){
 }
 
 double hexS_calculation(wstring x,wstring y, wstring z){
-    // If the function with the given parameters does not exist, then 0 will be returned
     return s_calculation(validator(x),validator(y),validator(z));
 }
 
