@@ -36,14 +36,20 @@ int main(){
     wchar_t  a = L' ', b = L' ';
     wcout <<L"Введіть дійсне число x: ";
     wcin >> x;
+    wcout <<L" Х у десятковій системі числення: "<< defaultfloat << validator(x)<< endl;
+    wcout<<L" Х у шіснадцятковій системі числення: "<< hexfloat << validator(x) << endl;
     do {
         wcout <<L"Введіть дійсне число y: ";
         wcin >> y;
         if (validator(y) == 0)
             wcout << L"Введіть значення \"У\" ще раз (y≠0)." << endl;
     } while (validator(y) == 0);
+    wcout <<L" У у десятковій системі числення: " << defaultfloat << validator(y)<< endl;
+    wcout <<L" У у шіснадцятковій системі числення: "<< hexfloat << validator(y)<< endl;
     wcout <<L"Введіть дійсне число z: ";
     wcin >> z;
+    wcout <<L" Z у десятковій системі числення: "<< defaultfloat <<validator(z)<< endl;
+    wcout  <<L" Z у шіснадцятковій системі числення: "<< hexfloat << validator(z)<< endl;
     wcout <<L"Введіть символ a: ";
     wcin >> a;
     cin.clear();
@@ -51,7 +57,7 @@ int main(){
     wcout <<L"Введіть символ b: ";
     wcin >> b;
     wcout << boolalpha << L"Результат логічного виразу: "<<aBCondition(a,b) << endl;
-    wcout << L"Результат роботи модулю s_calculation: "<< hexS_calculation(x,y,z) << endl;
+    wcout << L"Результат роботи модулю s_calculation: "<< defaultfloat << hexS_calculation(x,y,z) << endl;
     system("pause");
     return 0;
 }
