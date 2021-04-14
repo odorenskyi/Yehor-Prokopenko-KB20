@@ -1,7 +1,21 @@
 #ifndef MODULESPROKOPENKO_H
 #define MODULESPROKOPENKO_H
 #include<iostream>
-struct forTask9_1;
+#include<string>
+#include <vector>
+
+
+void clearWcin();
+
+struct forTask9_2{
+    double nPowM = 0;
+    double mPowN = 0;
+    std::vector<int> forNToM;
+};
+
+struct forTask9_1{
+    std::wstring character = L"", speed = L"";
+};
 struct forTask9_2;
 void consoleToUtf8();
 double s_calculation(float x, float y, float z);

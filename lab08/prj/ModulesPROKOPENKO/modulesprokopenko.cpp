@@ -6,16 +6,7 @@
 #include <windows.h>
 #include <wchar.h>
 #include <locale.h>
-#include <vector>
-struct forTask9_1{
-    std::wstring character = L"", speed = L"";
-};
-
-struct forTask9_2{
-    long nPowM = 0;
-    long mPowN = 0;
-    std::vector<int> forNToM;
-};
+#include <limits>
 
 forTask9_1 task9_1( char ball ){
     struct forTask9_1 result;
@@ -56,7 +47,7 @@ forTask9_1 task9_1( char ball ){
     case 11: result.speed = L"28,5 - 32,6";
         result.character = L"Жорстокий шторм";
         break;
-    case 12: result.speed = L"⩾ 32,6";
+    case 12: result.speed = L"≥ 32,6";
         result.character = L"Ураган (Буревій)";
         break;
     default: result.speed = L"None";
@@ -96,11 +87,27 @@ void consoleToUtf8()
 forTask9_2 task9_2(int n, int m)
 {
     forTask9_2 result;
-    result.mPowN = pow(m,n);
-    result.nPowM = pow(n,m);
-    for ( int i = n; i <= m; i++)
-        if (i % 2 == i)
-            result.forNToM.push_back(i);
+    if(m < 0){
+       result.nPowM += 1/(pow(n,abs(m)));
+    }else{
+       result.nPowM = pow(n,m);
+    }
+    if(n < 0){
+       result.mPowN += 1/pow(m,abs(n));
+    }else{
+       result.mPowN = pow(m,n);
+    }
+
+
+    if ( n < m ){
+        for ( int i = n; i <= m; i++)
+            if (abs(i % 2) == 1)
+                result.forNToM.push_back(i);
+    }else{
+        for ( int i = n; i >= m; i--)
+            if (abs(i % 2) == 1)
+                result.forNToM.push_back(i);
+    }
     return result;
 }
 
@@ -129,3 +136,10 @@ std::wstring devInfo(){
                          "╚══════════════════════════════════════════════════════╝\n";
     return info;
 }
+
+
+void clearWcin(){
+    std::wcin.clear();
+    std::wcin.ignore(std::numeric_limits < std::streamsize > :: max(), '\n');
+}
+
