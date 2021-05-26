@@ -22,10 +22,12 @@ void fS_calculation(){
 
         wcout <<L"Введіть дійсне число y: ";
         wcin >> y;
-        if(wcin.fail()){
+        if(wcin.fail() || y == 0){
             wcout << L"Введені некоректні дані!"<< endl;
+            wcout << L"Введіть значення \"У\" ще раз (y≠0)." << endl;
+
         }
-    }while(wcin.fail());
+    }while(wcin.fail() || y == 0);
 
     do{
         clearWcin();
