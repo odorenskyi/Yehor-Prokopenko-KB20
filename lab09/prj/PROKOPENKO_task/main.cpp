@@ -137,36 +137,33 @@ int main()
         switch (comand) {
         case L'u':
             fS_calculation();
-            exit(system("pause"));
             break;
         case L'o':
         case L'о':
             fTask9_1();
-            exit(system("pause"));
             break;
         case L'p':
         case L'р':
             fTask9_2();
-            exit(system("pause"));
             break;
         case L'a':
         case L'а':
             fTask9_3();
-            exit(system("pause"));
             break;
         default:
-            wcout <<L"\aПомилка! \nНевірно введена команда!!! \nДля завершення введіть команду 'S' або 's', для перезапуску - будь-що інше!" << endl;
-            wcout << L"Ваша команда: ";
-            clearWcin();
-            wcin >> comand;
-            clearWcin();
-
-            if(comand == L's' || comand == L'S'){
-                exit(system("pause"));
-            }else{
-                system("cls");
-            }
+            wcout <<L"\aПомилка! \nНевірно введена команда!!!";
             break;
+        }
+        wcout <<L"\nДля завершення введіть команду 'S' або 's', для перезапуску - будь-що інше!" << endl;
+        wcout << L"Ваша команда: ";
+        clearWcin();
+        wcin >> comand;
+        clearWcin();
+
+        if(comand == L's' || comand == L'S'){
+            break;
+        }else{
+            system("cls");
         }
 
     }
